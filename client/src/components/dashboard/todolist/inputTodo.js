@@ -21,6 +21,7 @@ const InputTodo = ({ setTodosChange }) => {
       const data = await response.json();
       console.log(data);
       setTodosChange(true);
+      setDescription('');
     } catch (err) {
       console.error(err.message);
     }
@@ -30,6 +31,7 @@ const InputTodo = ({ setTodosChange }) => {
       <h1 className="text-center mt-5">PERN Todo List</h1>
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input
+        placeholder="Add Todo"
           type="text"
           className="form-control"
           value={description}
