@@ -57,7 +57,8 @@ const ListTodos = ({allTodos}) => {
             <td>Doe</td>
             <td>john@example.com</td>
           </tr> */}
-          {todos.map(todo => (
+          {todos.length !== 0 && todos[0].todo_id !== null && 
+          todos.map(todo => (
             <tr key={todo.todo_id}>
               <td>{todo.description}</td>
               <td>

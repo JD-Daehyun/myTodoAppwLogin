@@ -19,7 +19,7 @@ const InputTodo = ({ setTodosChange }) => {
       //   //once res then refresh the page and show the changes
       //   window.location = "/";
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setTodosChange(true);
       setDescription('');
     } catch (err) {
