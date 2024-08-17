@@ -9,6 +9,8 @@ import ListTodos from "./todolist/listTodo";
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
   const [allTodos, setAllTodos] = useState([]);
+  //This state allows us to see the change instantly without needing to refresh
+  const [todosChange, setTodosChange] = useState(false);
 
   async function getName() {
     try {
@@ -33,9 +35,11 @@ const Dashboard = ({ setAuth }) => {
     toast.success("Logged Out Successfully");
   };
 
+  //whenever we set todosChange to true this will take effect and allow the web to load the new data instantly 
   useEffect(() => {
     getName();
-  }, []);
+    setTodosChange(false);
+  }, [todosChange]);
 
   return (
     <Fragment>
@@ -46,7 +50,7 @@ const Dashboard = ({ setAuth }) => {
         </button>
       </div>
 
-      <InputTodo />
+      <InputTodo setTodosChange={setTodosChange} />
       <ListTodos allTodos={allTodos} />
     </Fragment>
   );

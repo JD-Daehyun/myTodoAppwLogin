@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-const InputTodo = () => {
+const InputTodo = ({ setTodosChange }) => {
   const [description, setDescription] = useState("");
 
   const onSubmitForm = async (e) => {
@@ -20,6 +20,7 @@ const InputTodo = () => {
       //   window.location = "/";
       const data = await response.json();
       console.log(data);
+      setTodosChange(true);
     } catch (err) {
       console.error(err.message);
     }
