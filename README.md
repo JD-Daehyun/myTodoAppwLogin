@@ -1,4 +1,4 @@
-# PERN Todo App with JWT Authentication and Local Storage
+# PERN Todo App with JWT Authorization and Local Storage
 
 ## Overview
 This project is a Full Stack PERN (Postgres, Express, React, Node) application that combines two separate projects into a fully functional Todo App with user authentication and authorization.
