@@ -2,15 +2,16 @@ import React, { Fragment, useEffect, useState } from "react";
 
 import EditTodo from "./editTodo";
 
-const ListTodos = () => {
+const ListTodos = ({allTodos}) => {
   const [todos, setTodos] = useState([]);
 
   //delete todo function
 
   const deleteTodo = async id => {
     try {
-      const deleteTodo = await fetch(`http://localhost:4001/todos/${id}`, {
-        method: "DELETE"
+      const deleteTodo = await fetch(`http://localhost:4001/dashboard/todos/${id}`, {
+        method: "DELETE",
+        headers: {token: localStorage.token}
       });
 
       setTodos(todos.filter(todo => todo.todo_id !== id));
@@ -19,27 +20,30 @@ const ListTodos = () => {
     }
   };
 
-  const getTodos = async () => {
-    try {
-      const response = await fetch("http://localhost:4001/todos");
-      const jsonData = await response.json();
+  //no longer necessary since we already have our dashboard fetch all of the todos and the name through getProfile so we just need to pass it down
 
-      setTodos(jsonData);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
+//   const getTodos = async () => {
+//     try {
+//       const response = await fetch("http://localhost:4001/todos");
+//       const jsonData = await response.json();
 
+//       setTodos(jsonData);
+//     } catch (err) {
+//       console.error(err.message);
+//     }
+//   };
+
+//since it takes time to fetch the data, we need to useEffect to update whenever the todo is updated
   useEffect(() => {
-    getTodos();
-  }, []);
+    setTodos(allTodos);
+  }, [allTodos]);
 
-  console.log(todos);
+//   console.log(todos);
 
   return (
     <Fragment>
       {" "}
-      <table class="table mt-5 text-center">
+      <table className="table mt-5 text-center">
         <thead>
           <tr>
             <th>Description</th>

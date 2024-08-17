@@ -4,9 +4,11 @@ import { toast } from "react-toastify";
 
 //components
 import InputTodo from "./todolist/inputTodo";
+import ListTodos from "./todolist/listTodo";
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
+  const [allTodos, setAllTodos] = useState([]);
 
   async function getName() {
     try {
@@ -17,7 +19,7 @@ const Dashboard = ({ setAuth }) => {
 
       const data = await response.json();
 
-      console.log(data);
+      setAllTodos(data);
       setName(data[0].user_name);
     } catch (err) {
       console.log(err.message);
@@ -45,6 +47,7 @@ const Dashboard = ({ setAuth }) => {
       </div>
 
       <InputTodo />
+      <ListTodos allTodos={allTodos} />
     </Fragment>
   );
 };
