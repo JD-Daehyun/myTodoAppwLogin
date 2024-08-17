@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 
 import EditTodo from "./editTodo";
 
-const ListTodos = ({allTodos}) => {
+const ListTodos = ({allTodos, setTodosChange}) => {
   const [todos, setTodos] = useState([]);
 
   //delete todo function
@@ -62,7 +62,7 @@ const ListTodos = ({allTodos}) => {
             <tr key={todo.todo_id}>
               <td>{todo.description}</td>
               <td>
-                <EditTodo todo={todo} />
+                <EditTodo todo={todo} setTodosChange={setTodosChange}/>
               </td>
               <td>
                 <button

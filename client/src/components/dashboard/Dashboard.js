@@ -51,7 +51,7 @@ const Dashboard = ({ setAuth }) => {
       </div>
 
       <InputTodo setTodosChange={setTodosChange} />
-      <ListTodos allTodos={allTodos} />
+      <ListTodos allTodos={allTodos} setTodosChange={setTodosChange} />
     </Fragment>
   );
 };

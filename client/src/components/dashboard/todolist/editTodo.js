@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-const EditTodo = ({ todo }) => {
+const EditTodo = ({ todo, setTodosChange }) => {
   const [description, setDescription] = useState(todo.description);
 
   //edit description function
@@ -8,17 +8,22 @@ const EditTodo = ({ todo }) => {
   const updateDescription = async (e) => {
     e.preventDefault();
     try {
+      const myHeaders = new Headers();
+
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("token", localStorage.token);
+
       const body = { description };
       const response = await fetch(
-        `http://localhost:4001/todos/${todo.todo_id}`,
+        `http://localhost:4001/dashboard/todos/${todo.todo_id}`,
         {
           method: "PUT", //specify to PUT rather than GET
-          headers: { "Content-Type": "application/json" },
+          headers: myHeaders,
           body: JSON.stringify(body),
         }
       );
-
-      window.location = "/"; //refresh the page
+      setTodosChange(true);
+      // window.location = "/"; //refresh the page
     } catch (err) {
       console.error(err.message);
     }
