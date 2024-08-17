@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "./components/dashboard/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Landing from "./components/Landing";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -41,6 +42,16 @@ function App() {
       <BrowserRouter>
         <div className="container">
           <Routes>
+            <Route
+              path="/"
+              element={
+                !isAuthenticated ? (
+                  <Landing />
+                ) : (
+                  <Navigate to="/dashboard" />
+                )
+              }
+            />
             <Route
               path="/login"
               element={
