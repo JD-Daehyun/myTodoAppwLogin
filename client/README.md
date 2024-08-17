@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# PERN Todo App with JWT Authentication and Local Storage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This project is a Full Stack PERN (Postgres, Express, React, Node) application that combines two separate projects into a fully functional Todo App with user authentication and authorization.
 
-## Available Scripts
+### Key Technologies
+- **PostgreSQL**: Relational database used to store user and task data.
+- **Express**: Backend framework used to build the server and API endpoints.
+- **React**: Frontend library used to create the user interface.
+- **Node.js**: JavaScript runtime used to build the server and handle backend logic.
 
-In the project directory, you can run:
+### Project Breakdown
+1. **Todo App**: A basic application that allows users to create, edit, delete, and view tasks.
+2. **Login Page with JWT**: A secure login system that uses JSON Web Tokens (JWT) for authorization.
 
-### `npm start`
+These two projects were then combined to create a comprehensive Full Stack application. Users can register with their email, password, and name, then log in to access a dashboard where they can manage their todos. Each user's todos are private, meaning other users cannot view them.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Additional Features
+- **Bootstrap**: Used to enhance the user interface and provide responsive design elements.
+- **React Toastify**: Integrated for providing user-friendly notifications (toast messages).
+- **W3Schools Resources**: Utilized for implementing modals and tables.
+- **Postman**: Employed for testing API endpoints and ensuring proper request/response handling.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## What I Learned
+1. **Backend Setup**: Properly configured the backend, including the server and database integration.
+2. **Relational Database Management**: Created and connected multiple tables using a relational database schema.
+3. **Database Schema Design**: Developed a simple yet effective database schema to manage user and todo data.
+4. **Security Measures**: Implemented password hashing and salting to enhance user security.
+   ![Data Schema](../todo%20and%20user%20data%20schema.jpg)
+5. **API Testing**: Used Postman and browser console to test API requests and responses effectively.
 
-### `npm test`
+## Areas for Improvement
+1. **Secure Token Storage**: In a production environment, storing authorization tokens in local storage is not recommended due to potential Cross-Site Scripting (XSS) attacks. A better approach is to use session IDs and cookies, or store JWTs in cookies.
+2. **State Management**: For larger applications, incorporating Redux or another state management library is advisable to ensure consistency across components and manage complex state logic efficiently.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Conclusion
+This project provided a great opportunity to explore and integrate various aspects of frontend and backend development within a Full Stack application. It served as a comprehensive exercise in building a secure, user-friendly, and functional web application.
