@@ -2,42 +2,51 @@ import React, { Fragment, useState, useEffect } from "react";
 
 import { toast } from "react-toastify";
 
-const Dashboard = ({setAuth}) =>{
-    const [name, setName] = useState('');
+//components
+import InputTodo from "./todolist/inputTodo";
 
-    async function getName(){
-        try{    
-            const response = await fetch('http://localhost:4001/dashboard/', {
-                method: "GET",
-                headers: {token: localStorage.token }
-            });
+const Dashboard = ({ setAuth }) => {
+  const [name, setName] = useState("");
 
-            const data = await response.json();
+  async function getName() {
+    try {
+      const response = await fetch("http://localhost:4001/dashboard/", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
 
-            // console.log(data);
-            setName(data.user_name);
+      const data = await response.json();
 
-        }catch(err){
-            console.log(err.message);
-        }
+      console.log(data);
+      setName(data[0].user_name);
+    } catch (err) {
+      console.log(err.message);
     }
+  }
 
-    const logOut =(e) =>{
-        e.preventDefault();
-        localStorage.removeItem("token");
-        setAuth(false);
-        toast.success('Logged Out Successfully');
-    }
+  const logOut = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    setAuth(false);
+    toast.success("Logged Out Successfully");
+  };
 
-    useEffect(()=>{
-        getName();
-    }, []);
+  useEffect(() => {
+    getName();
+  }, []);
 
-    return <Fragment>
-        <h1>Dashboard {name}</h1>
-        <button className="btn btn-primary"onClick={e => logOut(e)}>Log Out</button>
+  return (
+    <Fragment>
+      <div className="d-flex mt-5 justify-content-around">
+        <h2>{name}'s Todo List</h2>
+        <button className="btn btn-primary" onClick={(e) => logOut(e)}>
+          Log Out
+        </button>
+      </div>
+
+      <InputTodo />
     </Fragment>
+  );
 };
-
 
 export default Dashboard;
