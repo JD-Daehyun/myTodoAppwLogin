@@ -6,14 +6,20 @@ const InputTodo = () => {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
+      const myHeaders = new Headers();
+
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("token", localStorage.token);
       const body = { description };
-      const response = await fetch("http://localhost:4001/todos", {
+      const response = await fetch("http://localhost:4001/dashboard/todos", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: myHeaders,
         body: JSON.stringify(body),
       });
-      //once res then refresh the page and show the changes
-      window.location = "/";
+      //   //once res then refresh the page and show the changes
+      //   window.location = "/";
+      const data = await response.json();
+      console.log(data);
     } catch (err) {
       console.error(err.message);
     }
